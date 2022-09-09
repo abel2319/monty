@@ -1,45 +1,46 @@
 #include "monty.h"
 
-int identify_opcode(char *line)
+/**
+ * identify_opcode - 
+ * @line: a monty statement
+ *
+ * Return: SUCCESS or FAILURE
+ */
+char** identify_opcode(char **s, char *line)
 {
 	char c;
-	char *tmp = NULL;
-	int i = 0, j = 0, n = 0;
+	int i = 0, j = 0, n = 0, t = 0;
 
+	s = malloc(sizeof(char*) * 2);
+	verify_allocation(s);
 	c = line[0];
-
-	while (c != '\0')
+	while (c != '\0' && t != 2)
 	{
 		n = 0;
-		if (tmp != NULL)
-			free(tmp);
 		if (c != ' ')
 		{
-			while (c != ' ' && c != '\n')
+			while (c != ' ' && c != '\0' && c != EOF && c != '\n')
 			{
 				n++;
 				c =  line[i];
 				i++;
 			}
-			tmp = malloc(sizeof(char) * n);
-			if (tmp == NULL)
-			{
-				fprintf(stderr, "Error: malloc failed\n");
-				return (EXIT_FAILURE);
-			}
+			s[t] = malloc(sizeof(char) * n);
+			verify_allocation(s[t]);
 			i = i - n;
 			j = i;
 			c = line[i];
-			while (c != ' ' && c != '\n')
+			while (c != ' ' && c != '\0')
 			{
-				tmp[i - j]= line[i];
+				s[t][i - j]= line[i];
 				i++;
 				c = line[i];
 			}
-			printf("%s\n", tmp);
+			t++;
 		}
 		i++;
 		c = line[i];
 	}
-	return (1);
+
+	return (s);
 }

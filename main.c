@@ -1,7 +1,9 @@
 #include "monty.h"
-
+stack_t *stack = NULL;
 /**
  * main - entry of code
+ * @argc: number of arguments
+ * @argv: all arguments
  *
  * Return: EXIT-SUCCESS if succeed
  * EXIT_FAILURE otherwize
@@ -9,58 +11,44 @@
 int main(int argc, char *argv[])
 {
 	FILE *stream;
-	/*char *line = NULL;
-	size_t len = 0;
-	int nread = 1;*/
-	char *line;
-	int i = 0;
+	char *line, **tmp;
+	int i = 0, t = 0, l = 0;
 	char c;
+	void (*f)(stack_t **, unsigned int);
 
-	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
-
+	verify_argc(argc);
 	stream = fopen(argv[1], "r");
-	if (stream == NULL)
-	{
-		perror("Error: Can't open file <file");
-		exit(EXIT_FAILURE);
-	}
+	verify_stream(stream);
 	line = malloc(sizeof(char) * 256);
 	verify_allocation(line);
 	do
 	{
 		c = fgetc(stream);
+		printf("%c", c);
 		if (c != '\n')
-		{
 			line[i] = c;
-		}
 		else
 		{
+			l++;
+			tmp = identify_opcode(tmp, line);
+			f = (*get_opcode)(tmp);
+			verify_opc(f, tmp[1], l);
+			if (f == push)
+			{
+				t = atoi(tmp[1]);
+				verify_int(t, l);
+			}
+			f(&stack, t);
 			i = -1;
-			printf("%s\n", line);
-
 			if (line != NULL)
 			{
 				free(line);
-				line = malloc(sizeof(char)*256);
+				line = malloc(sizeof(char) * 256);
 				verify_allocation(line);
 			}
 		}
 		i++;
 	} while (c != EOF);
-	/*do
-	{
-		nread = getline(&line, &len, stream);
-		fwrite(line, nread, 1, stdout);
-		identify_opcode(line);
-		free(line);
-		nread = getline(&line, &len, stream);
-	} while (nread != -1);*/
-
-	/*free(line);*/
 	fclose(stream);
 	exit(EXIT_SUCCESS);
 }
