@@ -27,11 +27,19 @@ int _strcmp(char *s1, char *s2)
 	return (0);
 }
 
+void empty(__attribute__((unused))stack_t **stack, 
+		__attribute__((unused))unsigned int line)
+{
+
+}
 void (*get_opcode(char **s))(stack_t **, unsigned int)
 {
 	instruction_t ops[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
+		{"", empty},
 		{NULL, NULL}
 	};
 	int i = 0, j = 0;

@@ -35,17 +35,24 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-char** identify_opcode(char **tmp, char *line);
 int verify_allocation(void *tmp);
 int verify_stream(FILE *stream);
 int verify_argc(int argc);
 int verify_opc(void (*f)(stack_t **, unsigned int), char *op, int l);
 int verify_int(int arg, int l);
+
+char** identify_opcode(char **tmp, char *line);
 void (*get_opcode(char **s))(stack_t **, unsigned int);
+
 int _strlen(char *str);
 int _strcmp(char *s1, char *s2);
+
 void push(stack_t **stack, unsigned int line);
 void pall(stack_t **stack, __attribute__((unused)) unsigned int line);
+void pint(stack_t **stack, unsigned int line);
+void pop(stack_t **stack, unsigned int line);
+void empty(__attribute__((unused))stack_t **stack, 
+		__attribute__((unused))unsigned int line);
 
 extern stack_t *stack;
 

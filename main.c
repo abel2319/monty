@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 		l++;
 		tmp = identify_opcode(tmp, line);
 		f = (*get_opcode)(tmp);
-		verify_opc(f, tmp[1], l);
+		verify_opc(f, tmp[0], l);
 		if (f == push)
 		{
 			t = atoi(tmp[1]);
