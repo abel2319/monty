@@ -31,8 +31,10 @@ int main(int argc, char *argv[])
 		{
 			t = atoi(tmp[1]);
 			verify_int(t, l);
+			f(&stack, t);
 		}
-		f(&stack, t);
+		else
+			f(&stack, l);
 		nread = getline(&line, &len, stream);
 	}
 

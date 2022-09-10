@@ -11,7 +11,7 @@ int verify_allocation(void *tmp)
 	if (tmp == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
 }
@@ -26,7 +26,7 @@ int verify_stream(FILE *stream)
 {
 	if (stream == NULL)
 	{
-		perror("Error: Can't open file <file");
+		fprintf(stderr, "Error: Can't open file\n");
 		exit(EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
@@ -58,7 +58,7 @@ int verify_int(int arg, int l)
 {
 	if (arg == 0)
 	{
-		fprintf(stderr, "L%d: push integer\n", l);
+		fprintf(stderr, "L%d: usage: push integer\n", l);
 		exit(EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
