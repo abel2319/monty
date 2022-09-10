@@ -30,7 +30,7 @@ char** identify_opcode(char **s, char *line)
 			i = i - n;
 			j = i;
 			c = line[i];
-			while (c != ' ' && c != '\0')
+			while (c != ' ' && c != '\n')
 			{
 				s[t][i - j]= line[i];
 				i++;
