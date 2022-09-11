@@ -1,5 +1,5 @@
 #include "monty.h"
-stack_t *stack = NULL;
+
 /**
  * main - entry of code
  * @argc: number of arguments
@@ -10,6 +10,7 @@ stack_t *stack = NULL;
  */
 int main(int argc, char *argv[])
 {
+	stack_t *stack = NULL;
 	FILE *stream;
 	char *line, **tmp;
 	int nread, l = 0, t = 0;

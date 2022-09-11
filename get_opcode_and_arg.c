@@ -49,7 +49,7 @@ char **identify_opcode(char **s, char *line)
 					s[t][i - j] = line[i];
 				else
 				{
-					if ((line[i] >= '0' && line[i] <= '9') || line[i] =='-')
+					if ((line[i] >= '0' && line[i] <= '9') || line[i] == '-')
 						s[t][i - j] = line[i];
 					else
 					{

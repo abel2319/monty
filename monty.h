@@ -55,6 +55,6 @@ void pop(stack_t **stack, unsigned int line);
 void empty(__attribute__((unused))stack_t **stack, 
 		__attribute__((unused))unsigned int line);
 
-extern stack_t *stack;
+/*extern stack_t *stack;*/
 
 #endif
