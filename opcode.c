@@ -38,13 +38,10 @@ void pall(stack_t **stack, __attribute__((unused)) unsigned int line)
 {
 	stack_t *tmp = *stack;
 
-	if (tmp != NULL)
-		while (tmp->prev != NULL)
-			tmp = tmp->prev;
 	while (tmp != NULL)
 	{
 		printf("%d\n", tmp->n);
-		tmp = tmp->next;
+		tmp = tmp->prev;
 	}
 }
 /**

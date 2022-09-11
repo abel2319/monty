@@ -13,6 +13,14 @@ int _strlen(char *str)
 	return (1 + _strlen(str + 1));
 }
 
+/**
+ * _strcmp - verify if two strings are same
+ * @s1: first string
+ * @s2: seconde string
+ *
+ * Return: 1 if they are same
+ * 0 otherwize
+ */
 int _strcmp(char *s1, char *s2)
 {
 	int i;
@@ -27,11 +35,25 @@ int _strcmp(char *s1, char *s2)
 	return (0);
 }
 
-void empty(__attribute__((unused))stack_t **stack, 
+/**
+ * empty - just to handle with empty string in monty file
+ * @stack: the stack
+ * @line: the line
+ *
+ * Return: the length of string
+ */
+void empty(__attribute__((unused))stack_t **stack,
 		__attribute__((unused))unsigned int line)
 {
 
 }
+
+/**
+ * get_opcode - get the rigth opcode
+ * @s: string for identify the opcode
+ *
+ * Return: the length of string
+ */
 void (*get_opcode(char **s))(stack_t **, unsigned int)
 {
 	instruction_t ops[] = {

@@ -36,12 +36,13 @@ typedef struct instruction_s
 } instruction_t;
 
 int verify_allocation(void *tmp);
-int verify_stream(FILE *stream);
+int verify_stream(FILE *stream, char *file);
 int verify_argc(int argc);
 int verify_opc(void (*f)(stack_t **, unsigned int), char *op, int l);
-int verify_int(int arg, int l);
+int verify_int(int arg, int l, char *s);
 
 char** identify_opcode(char **tmp, char *line);
+int count(char *line, int *i);
 void (*get_opcode(char **s))(stack_t **, unsigned int);
 
 int _strlen(char *str);

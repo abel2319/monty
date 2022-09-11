@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
 	verify_argc(argc);
 	stream = fopen(argv[1], "r");
-	verify_stream(stream);
+	verify_stream(stream, argv[1]);
 
 	nread = getline(&line, &len, stream);
 	while (nread != -1)
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 		if (f == push)
 		{
 			t = atoi(tmp[1]);
-			verify_int(t, l);
+			verify_int(t, l, tmp[1]);
 			f(&stack, t);
 		}
 		else
